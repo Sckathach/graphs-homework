@@ -15,7 +15,7 @@ class LinkPrediction(ABC):
         self.graph = graph
         self.N = len(graph)
 
-    def neighbors(self, v: int):
+    def neighbors(self, v: int) -> List[Tuple[int, int]]:
         """
         Returns the neighbors list of a node
 
@@ -80,6 +80,6 @@ def generate_non_edges(graph: nx.Graph) -> List[Tuple[int, int]]:
     :return:
     """
     all_nodes = list(graph.nodes)
-    potential_pairs = combinations(all_nodes, 2)  # Step 1
-    non_edges = [pair for pair in potential_pairs if not graph.has_edge(*pair)]  # Step 2 and 3
+    potential_pairs = combinations(all_nodes, 2)
+    non_edges = [pair for pair in potential_pairs if not graph.has_edge(*pair)]
     return non_edges
